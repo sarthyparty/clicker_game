@@ -8,9 +8,28 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    @State private var showGreeting = false
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Button(action: {}) {
+                HStack {
+                    Spacer()
+                    Text("Work")
+                    Spacer()
+                }
+            }
+            Button(action: {}) {
+                HStack {
+                    Spacer()
+                    Text("Upgrade")
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
@@ -19,3 +38,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
