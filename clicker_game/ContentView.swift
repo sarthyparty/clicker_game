@@ -12,7 +12,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showGreeting = false
-
+    @State var textt: String="Upgrade"
     var body: some View {
         VStack {
             Button(action: {}) {
@@ -22,12 +22,19 @@ struct ContentView: View {
                     Spacer()
                 }
             }
-            Button(action: {}) {
-                HStack {
-                    Spacer()
-                    Text("Upgrade")
-                    Spacer()
+            Button(action: {
+                if(self.textt=="Upgrade"){
+                self.textt="Upgraded"
+                } else {
+                    self.textt="Upgrade"
                 }
+            }) {
+                HStack {
+                    ZStack{
+                        Image("skol")
+                        Text(self.textt)
+                    }
+                }.frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
     }
