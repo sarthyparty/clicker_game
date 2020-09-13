@@ -18,7 +18,13 @@ struct ContentView: View {
             Button(action: {}) {
                 HStack {
                     Spacer()
-                    Text("Work")
+                    ZStack {
+                        Image("skol")
+                            .renderingMode(.original)
+                        Text("Work")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.black)
+                    }
                     Spacer()
                 }
             }
@@ -30,8 +36,7 @@ struct ContentView: View {
                 }
             }) {
                 HStack {
-                    ZStack{
-                        Image("skol")
+                    ZStack {
                         Text(self.textt)
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
