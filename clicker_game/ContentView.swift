@@ -17,7 +17,6 @@ struct ContentView: View {
         VStack {
             Button(action: {}) {
                 HStack {
-                    Spacer()
                     ZStack {
                         Image("skol")
                             .renderingMode(.original)
@@ -25,7 +24,6 @@ struct ContentView: View {
                             .font(.largeTitle)
                             .foregroundColor(Color.black)
                     }
-                    Spacer()
                 }
             }
             Button(action: {
@@ -37,6 +35,8 @@ struct ContentView: View {
             }) {
                 HStack {
                     ZStack {
+                        Image("hammer_icon")
+                            .renderingMode(.original)
                         Text(self.textt)
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
