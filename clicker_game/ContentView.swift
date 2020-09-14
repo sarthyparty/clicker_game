@@ -47,7 +47,7 @@ struct ContentView: View {
                             .renderingMode(.original)
                         Text("$\(self.cost)")
                     }
-                }.frame(maxWidth: 50, maxHeight: 150)
+                }.frame(maxWidth: .infinity, maxHeight: 150)
             }
         }
     }
