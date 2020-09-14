@@ -43,9 +43,11 @@ struct ContentView: View {
             }) {
                 HStack {
                     ZStack {
-                        Image("hammer_icon")
-                            .renderingMode(.original)
+                        Image(systemName: "hammer.fill")
+                            .font(.system(size: 90))
+                            .foregroundColor(.black)
                         Text("$\(self.cost)")
+                            .font(.system(size: 30, weight: .bold))
                     }
                 }.frame(maxWidth: .infinity, maxHeight: 150)
             }
