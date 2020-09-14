@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var textt: String="Upgrade"
     var body: some View {
         VStack {
+            Text("Money")
             Button(action: {}) {
                 HStack {
                     ZStack {
@@ -25,6 +26,7 @@ struct ContentView: View {
                             .foregroundColor(Color.black)
                     }
                 }
+                .frame(maxWidth: 200, maxHeight: 500)
             }
             Button(action: {
                 if(self.textt=="Upgrade"){
@@ -39,7 +41,7 @@ struct ContentView: View {
                             .renderingMode(.original)
                         Text(self.textt)
                     }
-                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                }.frame(maxWidth: 50, maxHeight: 150)
             }
         }
     }
