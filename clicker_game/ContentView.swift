@@ -11,12 +11,16 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var showGreeting = false
-    @State var textt: String="Upgrade"
+    @State var money = 0
+    @State var upgrades = 0
+    @State var salary = 10
+    @State var cost = 100
     var body: some View {
         VStack {
-            Text("Money")
-            Button(action: {}) {
+            Text("$\(self.money)")
+            Button(action: {
+                self.money = self.salary + self.money
+            }) {
                 HStack {
                     ZStack {
                         Image("skol")
@@ -29,17 +33,19 @@ struct ContentView: View {
                 .frame(maxWidth: 200, maxHeight: 500)
             }
             Button(action: {
-                if(self.textt=="Upgrade"){
-                self.textt="Upgraded"
-                } else {
-                    self.textt="Upgrade"
+                if self.money < self.cost {
+                    return
                 }
+                self.money-=self.cost
+                self.upgrades+=1
+                self.salary += self.upgrades*10
+                self.cost += self.upgrades*20
             }) {
                 HStack {
                     ZStack {
                         Image("hammer_icon")
                             .renderingMode(.original)
-                        Text(self.textt)
+                        Text("$\(self.cost)")
                     }
                 }.frame(maxWidth: 50, maxHeight: 150)
             }
