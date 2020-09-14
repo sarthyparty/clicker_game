@@ -42,13 +42,11 @@ struct ContentView: View {
                 self.cost += self.upgrades*20
             }) {
                 HStack {
-                    ZStack {
-                        Image(systemName: "hammer.fill")
-                            .font(.system(size: 90))
-                            .foregroundColor(.black)
-                        Text("$\(self.cost)")
-                            .font(.system(size: 30, weight: .bold))
-                    }
+                    Text("Upgrade: $\(self.cost)")
+                        .font(.system(size: 30, weight: .bold))
+                    Image(systemName: "hammer.fill")
+                    .font(.system(size: 90))
+                    .foregroundColor(.black)
                 }.frame(maxWidth: .infinity, maxHeight: 150)
             }
         }
