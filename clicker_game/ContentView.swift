@@ -17,21 +17,34 @@ struct ContentView: View {
     @State var cost = 100
     var body: some View {
         VStack {
-            Text("$\(self.money)")
+            Spacer()
+            Text("$\(self.money)").font(.system(size: 45))
             Button(action: {
                 self.money = self.salary + self.money
             }) {
-                HStack {
+                ZStack {
+                    Image(systemName: "dollarsign.circle")
+                    
+                        .renderingMode(.original)
+                        .resizable()
+                        .colorMultiply(.green)
+                        .frame(width: 300, height: 300)
+                        .blur(radius: 5.0)
+                        .contrast(0.02)
                     ZStack {
-                        Image("skol")
-                            .renderingMode(.original)
-                        Text("Work")
-                            .font(.largeTitle)
+                        Text("Work").font(.system(size: 86))
+                            .foregroundColor(Color.green)
+                            .bold()
+                        Text("Work").font(.system(size: 80))
                             .foregroundColor(Color.black)
+                            .bold()
                     }
+                    
                 }
-                .frame(maxWidth: 200, maxHeight: 500)
+                .frame(maxWidth: 200, maxHeight: 350)
+                
             }
+            Spacer()
             Button(action: {
                 if self.money < self.cost {
                     return
@@ -48,7 +61,8 @@ struct ContentView: View {
                     .font(.system(size: 90))
                     .foregroundColor(.black)
                 }.frame(maxWidth: .infinity, maxHeight: 150)
-            }
+            }.buttonStyle(GradientButtonStyle())
+                
         }
     }
 }
@@ -58,5 +72,17 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct GradientButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.white)
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .trailing, endPoint: .leading))
+            .cornerRadius(15.0)
+            .scaleEffect(configuration.isPressed ? 0.7 : 0.9)
+    }
+}
+
 
 
