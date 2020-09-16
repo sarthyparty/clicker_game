@@ -60,7 +60,14 @@ struct ContentView: View {
                     Text("Upgrade: $\(self.cost)")
                         .font(.system(size: 30, weight: .bold))
                     Button(action: {
-                        
+                        if self.money < self.cost {
+                            return
+                        }
+                        self.money-=self.cost
+                        self.upgrades+=1
+                        self.salary += self.upgrades*10
+                        self.cost += self.upgrades*20
+                        self.isPressed.toggle()
                     }) {
                         Image(systemName: "hammer.fill")
                     }.buttonStyle(ButtonStyle2())
