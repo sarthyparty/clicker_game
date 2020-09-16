@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var upgrades = 0
     @State var salary = 10
     @State var cost = 100
+    @State var isPressed:Bool=false;
     var body: some View {
         VStack {
             Spacer()
@@ -24,7 +25,7 @@ struct ContentView: View {
             }) {
                 ZStack {
                     Image(systemName: "dollarsign.circle")
-                    
+                        
                         .renderingMode(.original)
                         .resizable()
                         .colorMultiply(.green)
@@ -53,16 +54,21 @@ struct ContentView: View {
                 self.upgrades+=1
                 self.salary += self.upgrades*10
                 self.cost += self.upgrades*20
+                self.isPressed.toggle()
             }) {
                 HStack {
                     Text("Upgrade: $\(self.cost)")
                         .font(.system(size: 30, weight: .bold))
-                    Image(systemName: "hammer.fill")
-                    .font(.system(size: 90))
-                    .foregroundColor(.black)
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "hammer.fill")
+                    }.buttonStyle(ButtonStyle2())
+                        .font(.system(size: 90))
+                        .foregroundColor(.black)
                 }.frame(maxWidth: .infinity, maxHeight: 150)
-            }.buttonStyle(GradientButtonStyle())
-                
+          }.buttonStyle(GradientButtonStyle())
+            
         }
     }
 }
@@ -80,7 +86,15 @@ struct GradientButtonStyle: ButtonStyle {
             .padding()
             .background(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .trailing, endPoint: .leading))
             .cornerRadius(15.0)
-            .scaleEffect(configuration.isPressed ? 0.7 : 0.9)
+            .scaleEffect(0.9)
+    }
+}
+
+struct ButtonStyle2: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.black)
+            .rotationEffect(.degrees(configuration.isPressed ? 45 : 0))
     }
 }
 
