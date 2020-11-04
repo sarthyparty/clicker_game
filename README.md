@@ -1,0 +1,1 @@
+This is game that was built using SwiftUI. In this game, pplayers earn money by clicking on the work button, and can increase their salary by pressing the upgrade button. Upgrading costs increase as salaries increase.
